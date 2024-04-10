@@ -68,8 +68,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Used
 -   **The Products Grid - [Grid](https://tailwindcomponents.com/component/card-list-tailwindcss-posts-articles).**
--   **Icons - [Icons](https://heroicons.dev).
--   **Forms - [Forms](https://tailwindcomponents.com/component/responsive-form-4).
+-   **Icons - [Icons](https://heroicons.dev).**
+-   **Forms - [Forms](https://tailwindcomponents.com/component/responsive-form-4).**
 
 
 ## Youtube Links:
