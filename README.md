@@ -1,17 +1,10 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">Battery Store</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## Battery Store
-The Home page
+## The Home page
+The landing page of the website
 ![image](https://github.com/jhnlaurence/online-battery-store/assets/76924425/5f344e5b-4c1b-4afc-bb96-372d08564d05)
 
-The Admin Page
+## The Admin Page
 Can insert a new battery brand and update battery stocks.
 ![image](https://github.com/jhnlaurence/online-battery-store/assets/76924425/917422f0-5285-492e-aeb0-fc6dd2f8014d)
 
