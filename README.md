@@ -65,12 +65,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Project Links
 
-Libraries
-The Products Grid - [Grid](https://tailwindcomponents.com/component/card-list-tailwindcss-posts-articles).
-Icons - [Icons](https://heroicons.dev).
-Forms - [Forms](https://tailwindcomponents.com/component/responsive-form-4).
-Youtube Links:
-https://www.youtube.com/watch?v=Po1i6BYG84c&list=PL4cUxeGkcC9hL6aCFKyagrT1RCfVN4w2Q&index=6
-https://www.youtube.com/watch?v=_r2qB44o_Fs&list=PL4cUxeGkcC9gpXORlEHjc5bgnIi5HEGhw&index=12
+## Used
+-   **The Products Grid - [Grid](https://tailwindcomponents.com/component/card-list-tailwindcss-posts-articles).**
+-   **Icons - [Icons](https://heroicons.dev).
+-   **Forms - [Forms](https://tailwindcomponents.com/component/responsive-form-4).
+
+
+## Youtube Links:
+-   **https://www.youtube.com/watch?v=Po1i6BYG84c&list=PL4cUxeGkcC9hL6aCFKyagrT1RCfVN4w2Q&index=6**
+-   **https://www.youtube.com/watch?v=_r2qB44o_Fs&list=PL4cUxeGkcC9gpXORlEHjc5bgnIi5HEGhw&index=12**
