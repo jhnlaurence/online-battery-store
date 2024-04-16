@@ -46,7 +46,7 @@
                             <p class="text-stone-100 text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
-                            <a href="{{ route('orders.index') }}">
+                            <a href="{{ route('orders.create') }}">
                             <button class="mt-8 text-white uppercase py-4 text-base font-light px-10 border w-fit
                                  border-white hover:bg-white hover:bg-opacity-10">
                                 Get started

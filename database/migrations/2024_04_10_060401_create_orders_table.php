@@ -15,9 +15,12 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
-            $table->string('brand_name');
-            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('contact');
+            $table->string('address');
+            $table->unsignedBigInteger('product_id'); // Foreign key column
             $table->unsignedBigInteger('quantity');
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

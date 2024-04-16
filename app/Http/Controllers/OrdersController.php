@@ -3,43 +3,89 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 use App\Models\Orders;
 use App\Models\Products;
 
 class OrdersController extends Controller
 {
-    const PLATINUM = 'Yokohama Platinum';
-    const SUPREME = 'Yokohama Supreme ';
-
-    const batteries = [
-        ['id'=> '1','brand'=> self::PLATINUM, 'size'=>'3SM', 'warranty'=> '27','price'=>'9,000' , 'stock'=>'20'],
-        ['id'=> '2','brand'=> self::PLATINUM, 'size'=>'2SM', 'warranty'=> '27','price'=>'8,000' , 'stock'=>'10'],
-        ['id'=> '3','brand'=> self::PLATINUM, 'size'=>'1SM', 'warranty'=> '27','price'=>'7,000' , 'stock'=>'20'],
-        ['id'=> '4','brand'=> self::SUPREME, 'size'=>'1SM', 'warranty'=> '24','price'=>'6,000' , 'stock'=>'35'],
-        ['id'=> '5','brand'=> self::SUPREME, 'size'=>'2SM', 'warranty'=> '24','price'=>'5,000' , 'stock'=>'90'],
-        ['id'=> '6','brand'=> self::SUPREME, 'size'=>'3SM', 'warranty'=> '24','price'=>'4,000' , 'stock'=>'40']
-    ];
-
     public function index(){
         //call the products here and display for ordering.
-        return view('orders.index', ['batteries'=> self::batteries]);
+        $orders = Orders::all();
+        return view('orders.index', ['orders'=> $orders]);
     }
 
+    // TODO: sort by product name, then sort again to make the 0 stock to the last on the list. 
     public function create(){
-        return view('orders.index', ['batteries'=> self::batteries]);
+
+        $batteries = Products::latest()->get();
+        return view('orders.create', ['batteries'=> $batteries]);
     }
 
+     // TODO: show blade design.
     public function show($id) {
 
         $order = Orders::findOrFail($id);
-
         return view('orders.show', ['order' => $order]);
     }
 
-    public function store(){
-        //get the id of the order and store it in the
-        $order = new Orders();
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'contact' => ['required', 'regex:/^[1-9]\d{9}$/'],
+            'address' => 'required|string|max:255',
+            'battery_id' => 'required'
+        ]);
 
-        return view('orders.index', ['batteries'=> self::batteries]);
+        if ($validator->fails()) {
+            Log::info('Fails');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $product = Products::findOrFail($request->battery_id);
+
+        if (!$product || $product->stock == 0) {
+            return redirect()->back()->with('error', 'Selected product is out of stock.');
+        }
+
+
+        $order = new Orders();
+        $order->name = $request->name;
+        $order->contact = $request->contact;
+        $order->address = $request->address;
+        $order->product_id = $request->battery_id;
+        $order->quantity = 1;
+
+        $order->save();
+        return redirect('/')->with('message', 'Order submitted successfully!');
     }
+
+
+    //will destroy the order and will update the stock number of that specific product
+    public function destroy($id)
+    {
+        $order = Orders::findOrFail($id);
+
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+        
+        //the product came from the order model. Created a relationship between the 2 tables
+        $product = $order->product;
+        
+        //Will not complete the order if stick is 0
+        if (!$product || $product->stock == 0) {
+            return redirect()->back()->with('noStockError', 'Selected product is out of stock.');
+        }
+
+        $product->stock -= $order->quantity;
+        $product->save();
+
+        $order->delete();
+
+        return redirect('/orders');
+    }
+
 }

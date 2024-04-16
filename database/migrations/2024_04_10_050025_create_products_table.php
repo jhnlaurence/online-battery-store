@@ -15,7 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('brand_name');
-            $table->string('month_warranty');
+            $table->string('size');
+            $table->unsignedBigInteger('month_warranty');
             $table->json('description')->nullable();
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('stock')->nullable();
